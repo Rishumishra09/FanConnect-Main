@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hockey Live | FanConnect</title>
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/live-matches.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="live-page">
+
+        <!-- TOP HEADER -->
+        <div class="live-header">
+
+            <div>
+                <h1>🏑 Hockey Live Center</h1>
+                <p>Live • Recent • Upcoming Hockey Matches</p>
+            </div>
+
+            <button class="back-btn" onclick="history.back()">
+                ← Back
+            </button>
+        </div>
+
+        <!-- TABS -->
+        <div class="match-tabs">
+
+            <button class="tab active" id="liveTab">
+                Live
+            </button>
+
+            <button class="tab" id="recentTab">
+                Recent
+            </button>
+
+            <button class="tab" id="upcomingTab">
+                Upcoming
+            </button>
+
+        </div>
+        <!-- FILTERS -->
+        <button class="filter-btn active" id="allFilter">
+            All
+        </button>
+
+        <button class="filter-btn" id="internationalFilter">
+            International
+        </button>
+
+        <button class="filter-btn" id="leagueFilter">
+            League
+        </button>
+
+        <button class="filter-btn" id="domesticFilter">
+            Men
+        </button>
+
+        <button class="filter-btn" id="womenFilter">
+            Women
+        </button>
+        <!-- MATCHES -->
+
+        <div class="matches-grid">
+
+            <!-- LIVE 1 -->
+            <div class="match-card live-match league">
+
+                <div class="match-top">
+                    <span class="league-name">IPL 2026</span>
+                    <span class="live-badge">🔴 LIVE</span>
+                </div>
+
+                <div class="teams-row">
+
+                    <div class="team">
+                        <img src="assets/images/rcb.png" alt="">
+                        <h3>India</h3>
+                        <span>186/4</span>
+                    </div>
+
+                    <div class="vs-area">
+                        <h2>VS</h2>
+                        <p>18.2 Overs</p>
+                    </div>
+
+                    <div class="team">
+                        <img src="assets/images/csk.png" alt="">
+                        <h3>Australia</h3>
+                        <span>200/6</span>
+                    </div>
+
+                </div>
+
+                <button class="match-btn">
+                    Live Match
+                </button>
+
+            </div>
+
+
+            <!-- LIVE 2 -->
+            <div class="match-card live-match international">
+
+                <div class="match-top">
+                    <span class="league-name">Asia Cup</span>
+                    <span class="live-badge">🔴 LIVE</span>
+                </div>
+
+                <div class="teams-row">
+
+                    <div class="team">
+                        <img src="assets/images/india.png" alt="">
+                        <h3>Netherlands</h3>
+                        <span>210/5</span>
+                    </div>
+
+                    <div class="vs-area">
+                        <h2>VS</h2>
+                        <p>34.5 Overs</p>
+                    </div>
+
+                    <div class="team">
+                        <img src="assets/images/pakistan.png" alt="">
+                        <h3>Germany</h3>
+                        <span>188/8</span>
+                    </div>
+
+                </div>
+
+                <button class="match-btn">
+                    Watch Live
+                </button>
+
+            </div>
+
+
+            <!-- RECENT -->
+            <div class="match-card recent-match international">
+
+                <div class="match-top">
+                    <span class="league-name">World Cup</span>
+                    <span class="upcoming-tag">
+                        Finished
+                    </span>
+                </div>
+
+                <div class="teams-row">
+
+                    <div class="team">
+                        <img src="assets/images/england.png" alt="">
+                        <h3>Belgium</h3>
+                        <span>290/8</span>
+                    </div>
+
+                    <div class="vs-area">
+                        <h2>VS</h2>
+                        <p>Finished</p>
+                    </div>
+
+                    <div class="team">
+                        <img src="assets/images/australia.png" alt="">
+                        <h3> Argentina</h3>
+                        <span>291/5</span>
+                    </div>
+
+                </div>
+
+                <button class="match-btn">
+                    View Result
+                </button>
+
+            </div>
+
+
+            <!-- UPCOMING -->
+            <div class="match-card upcoming-match league">
+
+                <div class="match-top">
+                    <span class="league-name">IPL 2026</span>
+                    <span class="upcoming-tag">
+                        Tomorrow
+                    </span>
+                </div>
+
+                <div class="teams-row">
+
+                    <div class="team">
+                        <img src="assets/images/mi.png" alt="">
+                        <h3>MI</h3>
+                    </div>
+
+                    <div class="vs-area">
+                        <h2>VS</h2>
+                        <p>7:30 PM</p>
+                    </div>
+
+                    <div class="team">
+                        <img src="assets/images/gt.png" alt="">
+                        <h3>GT</h3>
+                    </div>
+
+                </div>
+
+                <button class="match-btn">
+                    Set Reminder
+                </button>
+
+            </div>
+
+        </div>
+
+        <script>
+
+            const liveTab = document.getElementById("liveTab");
+            const recentTab = document.getElementById("recentTab");
+            const upcomingTab = document.getElementById("upcomingTab");
+
+            function showTab(type) {
+
+                // sab cards hide
+                document.querySelectorAll(".match-card")
+                    .forEach(card => {
+                        card.style.display = "none";
+                    });
+
+                // active remove
+                document.querySelectorAll(".tab")
+                    .forEach(tab => {
+                        tab.classList.remove("active");
+                    });
+
+                // selected cards show
+                document.querySelectorAll("." + type)
+                    .forEach(card => {
+                        card.style.display = "block";
+                    });
+            }
+
+
+            // LIVE
+            liveTab.addEventListener("click", function () {
+
+                showTab("live-match");
+                liveTab.classList.add("active");
+
+            });
+
+
+            // RECENT
+            recentTab.addEventListener("click", function () {
+
+                showTab("recent-match");
+                recentTab.classList.add("active");
+
+            });
+
+
+            // UPCOMING
+            upcomingTab.addEventListener("click", function () {
+
+                showTab("upcoming-match");
+                upcomingTab.classList.add("active");
+
+            });
+
+
+            // default load = LIVE
+            showTab("live-match");
+            liveTab.classList.add("active");
+            // FILTER BUTTONS
+
+            const allFilter =
+                document.getElementById("allFilter");
+
+            const internationalFilter =
+                document.getElementById("internationalFilter");
+
+            const leagueFilter =
+                document.getElementById("leagueFilter");
+
+            const domesticFilter =
+                document.getElementById("domesticFilter");
+
+            const womenFilter =
+                document.getElementById("womenFilter");
+
+            const filterButtons =
+                document.querySelectorAll(".filter-btn");
+
+
+            // ACTIVE FILTER STYLE
+            function removeFilterActive() {
+
+                filterButtons.forEach(btn => {
+                    btn.classList.remove("active");
+                });
+
+            }
+
+
+            // FILTER FUNCTION
+            function filterMatches(category) {
+
+                const cards =
+                    document.querySelectorAll(".match-card");
+
+                cards.forEach(card => {
+
+                    // hidden tab ko touch nahi karega
+                    if (card.style.display !== "none") {
+
+                        if (category === "all") {
+
+                            card.style.display = "block";
+
+                        }
+
+                        else if (
+                            card.classList.contains(category)
+                        ) {
+
+                            card.style.display = "block";
+
+                        }
+
+                        else {
+
+                            card.style.display = "none";
+                        }
+                    }
+
+                });
+
+            }
+
+
+            // ALL
+            allFilter.addEventListener("click", () => {
+
+                removeFilterActive();
+                allFilter.classList.add("active");
+
+                if (liveTab.classList.contains("active")) {
+                    showTab("live-match");
+                }
+
+                if (recentTab.classList.contains("active")) {
+                    showTab("recent-match");
+                }
+
+                if (upcomingTab.classList.contains("active")) {
+                    showTab("upcoming-match");
+                }
+
+            });
+
+
+            // INTERNATIONAL
+            internationalFilter.addEventListener("click", () => {
+
+                removeFilterActive();
+                internationalFilter.classList.add("active");
+
+                filterMatches("international");
+
+            });
+
+
+            // LEAGUE
+            leagueFilter.addEventListener("click", () => {
+
+                removeFilterActive();
+                leagueFilter.classList.add("active");
+
+                filterMatches("league");
+
+            });
+
+
+            // DOMESTIC
+            domesticFilter.addEventListener("click", () => {
+
+                removeFilterActive();
+                domesticFilter.classList.add("active");
+
+                filterMatches("domestic");
+
+            });
+
+
+            // WOMEN
+            womenFilter.addEventListener("click", () => {
+
+                removeFilterActive();
+                womenFilter.classList.add("active");
+
+                filterMatches("women");
+
+            });
+        </script>
+
+</body>
+
+</html>

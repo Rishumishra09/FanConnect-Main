@@ -1,0 +1,157 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  font-family: "Inter", sans-serif;
+  background: #07111f;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+body {
+  min-height: 100vh;
+}
+
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+input {
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ===== SPORTS POPUP ===== */
+
+.sports-popup{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.65);
+    backdrop-filter:blur(10px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.3s ease;
+}
+
+/* open state */
+.sports-popup.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.sports-box{
+    width:420px;
+    max-width:92%;
+    background:linear-gradient(
+        180deg,
+        #071a2f,
+        #03111f
+    );
+    border:1px solid rgba(0,255,255,.12);
+    border-radius:28px;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+.sports-box h2{
+    color:#fff;
+    text-align:center;
+    margin-bottom:22px;
+    font-size:28px;
+}
+
+/* sports buttons */
+
+.sport-card{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    color:#fff;
+    background:#0a223d;
+    border:1px solid rgba(255,255,255,.08);
+    padding:18px;
+    border-radius:18px;
+    margin-bottom:14px;
+    font-size:18px;
+    font-weight:600;
+    transition:.25s ease;
+}
+
+.sport-card:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(
+        90deg,
+        #6b46ff,
+        #15c8ff
+    );
+}
+
+/* close button */
+
+#closeSports{
+    width:100%;
+    border:none;
+    border-radius:16px;
+    padding:15px;
+    margin-top:10px;
+    background:linear-gradient(
+        90deg,
+        #7a3cff,
+        #17c6ff
+    );
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+}
+
+/* ===== TABLET ===== */
+
+@media(max-width:992px){
+
+    .sports-box{
+        width:380px;
+    }
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+    .sports-box{
+        width:95%;
+        border-radius:24px;
+        padding:22px;
+    }
+
+    .sports-box h2{
+        font-size:24px;
+    }
+
+    .sport-card{
+        font-size:16px;
+        padding:16px;
+    }
+
+    #closeSports{
+        padding:14px;
+        font-size:15px;
+    }
+}
